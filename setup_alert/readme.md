@@ -88,7 +88,7 @@ chmod +x /usr/lib/zabbix/alertscripts/telegram.sh
 
 ## **4. Set Up a Media Type in Zabbix**
 
-1. Go to **Administration → Media types → Create media type**.
+1. Go to **Alerts → Media types → Create media type**.
 2. Configure:
    - **Name**: `TelegramChannel`
    - **Type**: `Script`
@@ -102,14 +102,17 @@ chmod +x /usr/lib/zabbix/alertscripts/telegram.sh
 
 ## **5. Assign Media to a User**
 
-1. Navigate to **Administration → Users** and select a user.
+1. Navigate to **Users → Users** and select a user.
+2. Click on the **user** you want to configure notifications for.
 2. Open the **Media** tab and click **Add**.
 3. Configure:
-   - **Type**: `Telegram`
-   - **Send to**: Leave blank (it’s defined in the script).
+   - **Type**: `TelegramChannel`
+   - **Send to**: `telegram`
    - **When active**: `1-7,00:00-24:00` (sends alerts any time, any day).
    - **Severity**: Choose which alert levels to send (e.g., High, Disaster).
 4. Save the changes.
+
+![alt text](user_media.png)
 
 ---
 
