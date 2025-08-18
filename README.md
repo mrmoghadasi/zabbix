@@ -7,6 +7,7 @@ This Zabbix repository is a collection of scripts, templates, and configurations
 Below is a list of projects currently available in this repository. Click on each to explore the details:
 
 - [SSH Login Monitoring](./zabbix-ssh_login_monitoring): A bash script and Zabbix template to log and monitor SSH login activities, capturing session details and sending them to a Zabbix server for analysis.
+- [setup_alert](./setup_alert): A guide to setting up **Zabbix** to send alerts to a Telegram chat using a bot
 
 *Note*: This repository is a work in progress, and more projects will be added over time. Feel free to contribute or suggest new ideas!
 
