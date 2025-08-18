@@ -186,4 +186,3 @@ chmod +x /usr/lib/zabbix/alertscripts/telegram.sh
 That’s it! You’ve now got Zabbix sending alerts straight to your Telegram. If you run into issues or have questions, feel free to reach out or check the Zabbix and Telegram API documentation for more details.
 
 Happy monitoring! 🚀
-```
