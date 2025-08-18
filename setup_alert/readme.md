@@ -112,7 +112,7 @@ chmod +x /usr/lib/zabbix/alertscripts/telegram.sh
    - **Severity**: Choose which alert levels to send (e.g., High, Disaster).
 4. Save the changes.
 
-![alt text](user_media.png)
+![alt text](images/user_media.png)
 
 ---
 
@@ -130,7 +130,7 @@ chmod +x /usr/lib/zabbix/alertscripts/telegram.sh
    - **Severity**: Choose a level (e.g., High or Disaster).
 5. Save the trigger.
 
-![alt text](ssh_alert_trigger.png)
+![alt text](images/ssh_alert_trigger.png)
 
 ---
 
