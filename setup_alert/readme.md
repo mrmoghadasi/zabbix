@@ -49,12 +49,31 @@ Add the following content:
 #!/bin/bash
 TOKEN="YOUR_TOKEN_HERE"
 CHAT_ID="YOUR_CHAT_ID_HERE"
-MESSAGE="$1"
+RAW_LOG="$2"
 
+# Extract fields
+USER=$(echo "$RAW_LOG" | grep -oP '(?<=User: )[^|]+')
+IP=$(echo "$RAW_LOG" | grep -oP '(?<=IP: )[^|]+')
+TIME=$(echo "$RAW_LOG" | grep -oP '(?<=Time: )[^|]+')
+HOST=$(echo "$RAW_LOG" | grep -oP '(?<=Host: )[^|]+')
+SERVICE=$(echo "$RAW_LOG" | grep -oP '(?<=Service: )[^|]+')
+TTY=$(echo "$RAW_LOG" | grep -oP '(?<=TTY: )[^|]+')
+
+# Format message with Markdown
+MESSAGE="🚨 *SSH Login Detected* 🚨
+👤 *User:* $USER
+🕒 *Time:* $TIME
+🌐 *IP:* $IP
+🖥 *Host:* $HOST
+🔧 *Service:* $SERVICE
+📟 *TTY:* $TTY"
+
+# Send to Telegram
 curl -s -X POST https://api.telegram.org/bot$TOKEN/sendMessage \
-    -d chat_id=$CHAT_ID \
+    -d chat_id="$CHAT_ID" \
     -d text="$MESSAGE" \
     -d parse_mode="Markdown"
+
 ```
 
 Replace `YOUR_TOKEN_HERE` and `YOUR_CHAT_ID_HERE` with your bot’s token and chat ID.
@@ -71,11 +90,13 @@ chmod +x /usr/lib/zabbix/alertscripts/telegram.sh
 
 1. Go to **Administration → Media types → Create media type**.
 2. Configure:
-   - **Name**: `Telegram`
+   - **Name**: `TelegramChannel`
    - **Type**: `Script`
    - **Script name**: `telegram.sh`
-   - **Script parameters**: Add `{ALERT.MESSAGE}`
+   - **Script parameters**: Add `{ALERT.SENDTO}` and `{ALERT.MESSAGE}`
 3. Check **Enabled** and click **Add**.
+
+![alt text](image.png)
 
 ---
 
