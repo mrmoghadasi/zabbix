@@ -118,16 +118,19 @@ chmod +x /usr/lib/zabbix/alertscripts/telegram.sh
 
 ## **6. Create a Trigger**
 
-1. Go to **Configuration → Hosts** and select a host.
-2. Open the **Triggers** tab and click **Create trigger**.
-3. Configure:
-   - **Name**: e.g., `High CPU Load`
-   - **Expression**: Example for CPU load above 5:
+1. Go to: **Data collection** → **Hosts**.
+2. Click on **Triggers** in the **row** of the **host**.
+3. Click on **Create trigger** to the right (or on the trigger name to **edit** an existing trigger).
+4. Configure:*
+   - **Name**: e.g., `ssh_alert`
+   - **Expression**: Example for checks latest line in zabbix-ssh-logins.log file
      ```
-     {MyHost:system.cpu.load[percpu,avg1].last()} > 5
+     length(last(/SRV-49/log[/var/log/zabbix-ssh-logins.log,"User: ",,,skip],#1))>0
      ```
    - **Severity**: Choose a level (e.g., High or Disaster).
-4. Save the trigger.
+5. Save the trigger.
+
+![alt text](ssh_alert_trigger.png)
 
 ---
 
