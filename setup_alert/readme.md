@@ -96,7 +96,7 @@ chmod +x /usr/lib/zabbix/alertscripts/telegram.sh
    - **Script parameters**: Add `{ALERT.SENDTO}` and `{ALERT.MESSAGE}`
 3. Check **Enabled** and click **Add**.
 
-![alt text](image.png)
+![alt text](Media_type.png)
 
 ---
 
