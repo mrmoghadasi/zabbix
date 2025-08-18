@@ -136,14 +136,21 @@ chmod +x /usr/lib/zabbix/alertscripts/telegram.sh
 
 ## **7. Create an Action to Send Alerts**
 
-1. Go to **Configuration → Actions → Trigger actions → Create action**.
+1. Go to **Alerts → Actions → Trigger actions → Create action**.
 2. Configure:
-   - **Name**: `Send to Telegram`
-   - **Conditions**:
-     - Add: `Trigger severity >= High`
-   - **Operations**:
-     - **Send message to**: Select the user.
-     - **Send only to**: `Telegram`
+   - **Name**: `send-to-telegram`
+   - **Conditions → Add**:
+     - *Type*: `Trigger`
+     - *Operator*:  `equals`
+     - *Trigger source*: `Host`
+     - *Triggers*: `SRV-49: ssh_alert`
+
+   - **Operations → Add**:
+     - **Operations**: 
+       - *Send to users*: `Admin	(Zabbix Administrator)`
+       - *Send to media type*: `TelegramChannel`
+       - *Subject*: `SSH Login Alert on {HOST.NAME}`
+       - *Message*: `{ITEM.LASTVALUE}`
 3. Save the action.
 
 ---
